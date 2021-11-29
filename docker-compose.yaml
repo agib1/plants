@@ -30,13 +30,12 @@ services:
       - db
   vue:
     container_name: vue
-    build: frontend/plantsapp
+    build: frontend/plantsapp/
     ports:
       # - "8080:80" deploy
       - "8080:8080"
     volumes:
-      - ./frontend/plantsapp:/app/plantsapp
-      - /app/plantsapp/node_modules
+      - ./frontend/plantsapp:/app
 
 volumes:
   plants-db:
