@@ -1,0 +1,42 @@
+version: "3"
+
+services:     
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_DB=plants_accounts
+      - POSTGRES_USER=agib
+      - POSTGRES_PASSWORD=${POSTPASS}
+    ports:
+      - "5432"
+    volumes:
+      - plants-db:/var/lib/postgresql/data
+  dj:
+    container_name: dj
+    build: backend
+    command: >
+      sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - ./backend:/code
+    ports:
+      - "8000:8000"
+    environment:
+      - DB_HOST=db
+      - DB_NAME=plants_accounts
+      - DB_USER=agib
+      - DB_PASS=${DBPASS} 
+      - DJ_KEY=${DJKEY}
+    depends_on:
+      - db
+  vue:
+    container_name: vue
+    build: frontend/plantsapp
+    ports:
+      # - "8080:80" deploy
+      - "8080:8080"
+    volumes:
+      - ./frontend/plantsapp:/app/plantsapp
+      - /app/plantsapp/node_modules
+
+volumes:
+  plants-db:
