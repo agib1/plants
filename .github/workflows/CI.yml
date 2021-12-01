@@ -13,7 +13,7 @@ jobs:
   Test-Django:
     runs-on: ubuntu-latest
 
-    container: python:3.8-alpine
+    container: python:3.8-bullseye
 
     env:
       DB_PASS: ${{ secrets.DBPASS }}
@@ -46,6 +46,7 @@ jobs:
         # python -m pip install --upgrade pip
       - name: Install dependencies
         run: |
+          apt-get install -y libpq-dev
           pip install -r backend/requirements.txt
      
       - name: Lint
