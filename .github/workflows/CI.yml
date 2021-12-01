@@ -44,7 +44,7 @@ jobs:
         run: |
           pip install pylint
           cd backend
-          pylint *.py
+          pylint *.py --disable=C0415
      
       - name: Run migrations
         run: |
