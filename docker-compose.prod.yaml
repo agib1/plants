@@ -1,0 +1,47 @@
+version: "3"
+
+services:     
+  db_prod:
+    image: postgres
+    environment:
+      - POSTGRES_DB=plants_accounts
+      - POSTGRES_USER=agib
+      - POSTGRES_PASSWORD=${POSTPASS}
+    ports:
+      - "5432"
+    volumes:
+      - plants-db:/var/lib/postgresql/data
+  dj_prod:
+    container_name: dj_prod
+    build: backend
+    command: scripts/start_prod.sh
+    volumes:
+      - ./backend:/code
+    ports:
+      - "8000:8000"
+    environment:
+      - DB_HOST=db_prod
+      - DB_NAME=plants_accounts
+      - DB_USER=agib
+      - DB_PASS=${DBPASS} 
+      - DJ_KEY=${DJKEY}
+      - DEBUG=0
+      - ALLOWEDHOSTS=${ALLOWEDHOSTS}
+    depends_on:
+      - db_prod
+  nginx_prod:
+    container_name: nginx_prod
+    build:
+      context: .
+      dockerfile: nginx/Dockerfile
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx/prod.conf:/etc/nginx/nginx.conf
+      - django-static:/usr/src/app/static
+    depends_on:
+      - dj_prod
+
+volumes:
+  plants-db:
+  django-static:

@@ -5,3 +5,4 @@ psycopg2
 djangorestframework-jwt
 cryptography
 python-jose
+gunicorn==20.1.0

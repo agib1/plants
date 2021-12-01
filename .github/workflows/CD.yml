@@ -1,0 +1,41 @@
+name: CD
+
+on:
+  pull_request:
+    branches: [ master ]
+
+  workflow_dispatch:
+
+jobs:
+  stage-docker-image:
+    runs-on: ubuntu-latest
+
+    env:
+      DBPASS: ${{ sectets.DBPASS }}
+      POSTPASS: ${{ sectets.POSTPASS }} 
+      DJKEY: ${{ sectets.DJKEY}}
+      ALLOWEDHOSTS: '0.0.0.0'
+      REGISTRY: ghcr.io
+      
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Build the docker-compose production stack  
+        run: docker-compose -f docker-compose.prod.yaml build
+
+      - name: List images
+        run: docker images
+
+      - name: Push images
+        run: docker-compose -f docker-compose.prod.yaml push
+
+
+

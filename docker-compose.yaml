@@ -1,7 +1,7 @@
 version: "3"
 
 services:     
-  db:
+  db_dev:
     image: postgres
     environment:
       - POSTGRES_DB=plants_accounts
@@ -11,31 +11,34 @@ services:
       - "5432"
     volumes:
       - plants-db:/var/lib/postgresql/data
-  dj:
-    container_name: dj
-    build: backend
-    command: >
-      sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+  dj_dev:
+    container_name: dj_dev
+    build: ./backend/
+    command: scripts/start_dev.sh
     volumes:
       - ./backend:/code
+      - django-static:/backend/static
     ports:
       - "8000:8000"
     environment:
-      - DB_HOST=db
+      - DB_HOST=db_dev
       - DB_NAME=plants_accounts
       - DB_USER=agib
       - DB_PASS=${DBPASS} 
       - DJ_KEY=${DJKEY}
+      - DEBUG=1
+      - ALLOWEDHOSTS=${ALLOWEDHOSTS}
     depends_on:
-      - db
-  vue:
-    container_name: vue
+      - db_dev
+  vue_dev:
+    container_name: vue_dev
     build: frontend/plantsapp/
     ports:
-      # - "8080:80" deploy
       - "8080:8080"
     volumes:
       - ./frontend/plantsapp:/app
+      - /app/node_modules
 
 volumes:
   plants-db:
+  django-static:
