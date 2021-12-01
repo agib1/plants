@@ -17,12 +17,12 @@ jobs:
       DB_PASS: ${{ secrets.DBPASS }}
       DJ_KEY: ${{ secrets.DJKEY}}
       ALLOWEDHOSTS: '0.0.0.0'
-      DB_HOST: postgres
+      DB_HOST: db:5432
       DB_NAME: postgres
       DB_USER: postgres
 
     services:
-      postgres:
+      db:
         image: postgres:latest
         env:
           POSTGRES_USER: postgres
