@@ -17,8 +17,8 @@ jobs:
       DB_PASS: ${{ secrets.DBPASS }}
       DJ_KEY: ${{ secrets.DJKEY}}
       ALLOWEDHOSTS: '0.0.0.0'
-      DB_HOST: db:5432
-      DB_NAME: postgres
+      DB_HOST: db
+      DB_NAME: github_actions
       DB_USER: postgres
 
     services:
