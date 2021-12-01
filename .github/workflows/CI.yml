@@ -42,7 +42,13 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: 3.9
-     
+
+      - name: Set up venv
+        run: |
+          pip install virtualenv
+          virtualenv testdjango
+          source testdjango/bin/activate
+
         # python -m pip install --upgrade pip
       - name: Install dependencies
         run: |
@@ -64,6 +70,10 @@ jobs:
         run: |
           cd backend
           python manage.py test
+
+      - name: Close env
+        run: |
+          deactivate
 
 
   Test-Vue:
