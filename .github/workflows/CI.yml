@@ -12,6 +12,12 @@ jobs:
 
   Test-Django:
     runs-on: ubuntu-latest
+    
+    env:
+      DBPASS: ${{ sectets.DBPASS }}
+      POSTPASS: ${{ sectets.POSTPASS }} 
+      DJKEY: ${{ sectets.DJKEY}}
+      ALLOWEDHOSTS: '0.0.0.0'
 
     services:
       postgres:
