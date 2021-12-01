@@ -13,8 +13,6 @@ jobs:
   Test-Django:
     runs-on: ubuntu-latest
 
-    container: python:3.8-alpine
-
     env:
       DB_PASS: ${{ secrets.DBPASS }}
       DJ_KEY: ${{ secrets.DJKEY}}
@@ -25,7 +23,7 @@ jobs:
 
     services:
       db:
-        image: postgres:latest
+        image: postgres
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
@@ -43,8 +41,6 @@ jobs:
         with:
           python-version: 3.9
      
-      - name: psycopg2 prerequisites
-        run: apt-get install libpq-dev
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
