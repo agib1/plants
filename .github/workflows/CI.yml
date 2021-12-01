@@ -14,9 +14,9 @@ jobs:
     runs-on: ubuntu-latest
     
     env:
-      DBPASS: ${{ sectets.DBPASS }}
-      POSTPASS: ${{ sectets.POSTPASS }} 
-      DJKEY: ${{ sectets.DJKEY}}
+      DBPASS: ${{ secrets.DBPASS }}
+      POSTPASS: ${{ secrets.POSTPASS }} 
+      DJKEY: ${{ secrets.DJKEY}}
       ALLOWEDHOSTS: '0.0.0.0'
 
     services:
