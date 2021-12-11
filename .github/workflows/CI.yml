@@ -48,9 +48,9 @@ jobs:
       #     source testdjango/bin/activate
 
         # python -m pip install --upgrade pip
+        # apt-get install -y libpq-dev
       - name: Install dependencies
         run: |
-          apt-get install -y libpq-dev
           pip install -r backend/requirements.txt
      
       - name: Lint
