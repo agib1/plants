@@ -36,8 +36,8 @@ jobs:
 
       - name: Push images
         run: |
-          docker push plants_nginx_prod
-          docker push plants_dj_prod
+          docker push ${{ env.REGISTRY }}/${{ github.actor }}/plants_nginx_prod
+          docker push ${{ env.REGISTRY }}/${{ github.actor }}/plants_dj_prod
 
 
 
