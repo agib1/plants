@@ -41,14 +41,6 @@ jobs:
         with:
           python-version: 3.9
 
-      # - name: Set up venv
-      #   run: |
-      #     pip install virtualenv
-      #     virtualenv testdjango
-      #     source testdjango/bin/activate
-
-        # python -m pip install --upgrade pip
-        # apt-get install -y libpq-dev
       - name: Install dependencies
         run: |
           pip install -r backend/requirements.txt
@@ -69,39 +61,34 @@ jobs:
           cd backend
           python manage.py test
 
-      # - name: Close env
-      #   run: |
-      #     deactivate
-
-
-  # Test-Vue:
-  #   runs-on: ubuntu-latest
+  Test-Vue:
+    runs-on: ubuntu-latest
     
-  #   steps:
-  #     - uses: actions/checkout@v2
+    steps:
+      - uses: actions/checkout@v2
 
-  #     - name: Setup Node.js 
-  #       uses: actions/setup-node@v1
-  #       with:
-  #         node-version: '12'
+      - name: Setup Node.js 
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12'
 
-  #     - name: Install dependencies
-  #       run: |
-  #             cd frontend/plantsapp
-  #             npm ci # install dependencies
+      - name: Install dependencies
+        run: |
+              cd frontend/plantsapp
+              npm ci # install dependencies
 
-  #     - name: Build Vue App
-  #       run: |
-  #             cd frontend/plantsapp
-  #             npm run build --if-present # build the project
+      - name: Build Vue App
+        run: |
+              cd frontend/plantsapp
+              npm run build --if-present # build the project
 
-  #     - name: Lint Vue App
-  #       run: |
-  #             cd frontend/plantsapp
-  #             npm run lint
+      - name: Lint Vue App
+        run: |
+              cd frontend/plantsapp
+              npm run lint
               
-  #     - name: Test Vue App
-  #       run: |
-  #             cd frontend/plantsapp
-  #             npm run test:unit # run the tests
+      - name: Test Vue App
+        run: |
+              cd frontend/plantsapp
+              npm run test:unit # run the tests
   
