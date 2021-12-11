@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      DB_PASS: ${{ secrets.DBPASS }}
+      DB_PASS: postgres
       DJ_KEY: ${{ secrets.DJKEY}}
       ALLOWEDHOSTS: '0.0.0.0'
       DB_HOST: localhost
