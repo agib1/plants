@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  stage-docker-image:
+  push-docker-image:
     runs-on: ubuntu-latest
 
     env:
@@ -35,7 +35,7 @@ jobs:
         run: docker images
 
       - name: Push images
-        run: docker-compose -f docker-compose.prod.yaml push
+        run: docker-compose -f docker-compose.prod.yaml push ghcr.io/${{ github.actor }}
 
 
 
