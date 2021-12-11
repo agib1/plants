@@ -35,7 +35,10 @@ jobs:
         run: docker images
 
       - name: Push images
-        run: docker-compose -f docker-compose.prod.yaml push ghcr.io/${{ github.actor }}
+        run: |
+          docker push plants_nginx_prod
+          docker push plants_dj_prod
+
 
 
 
