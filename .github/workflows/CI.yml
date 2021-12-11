@@ -13,8 +13,6 @@ jobs:
   Test-Django:
     runs-on: ubuntu-latest
 
-    container: python:3.8-bullseye
-
     env:
       DB_PASS: ${{ secrets.DBPASS }}
       DJ_KEY: ${{ secrets.DJKEY}}
