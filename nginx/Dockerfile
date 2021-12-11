@@ -2,6 +2,7 @@ FROM node:lts-alpine as build
 
 WORKDIR /app
 COPY ./frontend/plantsapp/package*.json ./
+RUN npm cache verify
 RUN npm install
 COPY ./frontend/plantsapp .
 RUN npm run build
