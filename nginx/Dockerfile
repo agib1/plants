@@ -2,9 +2,9 @@ FROM node:lts-alpine as build
 
 WORKDIR /app
 COPY ./frontend/plantsapp/package*.json ./
+COPY ./frontend/plantsapp/ .
 RUN npm cache verify
 RUN npm install
-COPY ./frontend/plantsapp/ .
 RUN npm run build
 
 FROM nginx:stable-alpine as production
