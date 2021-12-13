@@ -16,6 +16,8 @@ services:
     command: scripts/start_prod.sh
     volumes:
       - ./backend:/code
+      - django-static:/backend/static
+      - django-media:/backend/media
     ports:
       - "8000:8000"
     environment:
@@ -35,9 +37,11 @@ services:
     volumes:
       - ./prod.conf:/etc/nginx/nginx.conf
       - django-static:/usr/src/app/static
+      - django-media:/usr/src/app/media
     depends_on:
       - dj_prod
 
 volumes:
   plants-db:
   django-static:
+  django-media:
