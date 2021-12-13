@@ -1,8 +1,8 @@
 from rest_framework import serializers
-from .models import Test
+from .models import Plant
 
-class TestSerializer(serializers.ModelSerializer):
+class PlantsSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Test
+        model = Plant
         fields = '__all__'
 
