@@ -12,10 +12,14 @@ services:
     volumes:
       - plants-db:/var/lib/postgresql/data
   dj_prod:
-    image: ghcr.io/agib1/plants_dj_prod:master
+    # image: ghcr.io/agib1/plants_dj_prod:master
+    container_name: dj_prod
+    build: ./backend/
     command: scripts/start_prod.sh
     volumes:
       - ./backend:/code
+      - django-static:/backend/static
+      - django-media:/backend/media
     ports:
       - "8000:8000"
     environment:
@@ -29,15 +33,19 @@ services:
     depends_on:
       - db_prod
   nginx_prod:
-    image: ghcr.io/agib1/plants_nginx_prod:master
+    # image: ghcr.io/agib1/plants_nginx_prod:master
+    container_name: nginx_prod
+    build: ./
     ports:
       - 80:80
     volumes:
       - ./prod.conf:/etc/nginx/nginx.conf
       - django-static:/usr/src/app/static
+      - django-media:/usr/src/app/media
     depends_on:
       - dj_prod
 
 volumes:
   plants-db:
   django-static:
+  django-media:

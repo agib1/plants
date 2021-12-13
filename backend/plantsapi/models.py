@@ -1,9 +1,14 @@
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 
-class Test(models.Model):
-    text = models.CharField(max_length=250)
-
+class Plant(models.Model):
+    name = models.CharField(max_length=100)
+    description = models.CharField(max_length=600)
+    image = models.ImageField(upload_to='plants/')
+    instructions = models.CharField(max_length=1400)
+    slug = models.SlugField(max_length=100)
+    
     def __str__(self):
-        return self.text
+        return self.name

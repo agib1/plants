@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <h1>we are plants</h1>
     <router-view/>
   </div>
 </template>
