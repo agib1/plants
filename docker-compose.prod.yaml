@@ -12,9 +12,7 @@ services:
     volumes:
       - plants-db:/var/lib/postgresql/data
   dj_prod:
-    # image: ghcr.io/agib1/plants_dj_prod:master
-    container_name: dj_prod
-    build: ./backend/
+    image: ghcr.io/agib1/plants_dj_prod:master
     command: scripts/start_prod.sh
     volumes:
       - ./backend:/code
@@ -33,9 +31,7 @@ services:
     depends_on:
       - db_prod
   nginx_prod:
-    # image: ghcr.io/agib1/plants_nginx_prod:master
-    container_name: nginx_prod
-    build: ./
+    image: ghcr.io/agib1/plants_nginx_prod:master
     ports:
       - 80:80
     volumes:
