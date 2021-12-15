@@ -1,3 +1,5 @@
+
+#takes images from github packages
 version: "3"
 
 services:     
@@ -30,6 +32,7 @@ services:
       - ALLOWEDHOSTS=${ALLOWEDHOSTS}
     depends_on:
       - db_prod
+  # server hosting vue frontend and django static files
   nginx_prod:
     image: ghcr.io/agib1/plants_nginx_prod:master
     ports:
@@ -38,6 +41,7 @@ services:
       - ./prod.conf:/etc/nginx/nginx.conf
       - django-static:/usr/src/app/static
       - django-media:/usr/src/app/media
+      - ././backend/Logging/:/var/log/backend
     depends_on:
       - dj_prod
 

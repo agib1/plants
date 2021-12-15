@@ -1,5 +1,8 @@
 #!/bin/bash
+# add static files to server
 python3 manage.py collectstatic --no-input
+# migrate database
 python3 manage.py makemigrations
 python3 manage.py migrate --no-input
-gunicorn plantsproj.wsgi:application --bind 0.0.0.0:8000
+#host django on gunicorn server
+gunicorn plantsproj.wsgi:application -c ./gunicorn.conf.py

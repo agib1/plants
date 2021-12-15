@@ -1,0 +1,19 @@
+[2021-12-15 14:51:21 +0000] [11] [INFO] Starting gunicorn 20.1.0
+[2021-12-15 14:51:21 +0000] [11] [INFO] Listening at: http://0.0.0.0:8000 (11)
+[2021-12-15 14:51:21 +0000] [11] [INFO] Using worker: sync
+[2021-12-15 14:51:21 +0000] [12] [INFO] Booting worker with pid: 12
+[2021-12-15 14:53:26 +0000] [11] [INFO] Starting gunicorn 20.1.0
+[2021-12-15 14:53:26 +0000] [11] [INFO] Listening at: http://0.0.0.0:8000 (11)
+[2021-12-15 14:53:26 +0000] [11] [INFO] Using worker: sync
+[2021-12-15 14:53:26 +0000] [12] [INFO] Booting worker with pid: 12
+[2021-12-15 14:55:33 +0000] [11] [INFO] Starting gunicorn 20.1.0
+[2021-12-15 14:55:33 +0000] [11] [INFO] Listening at: http://0.0.0.0:8000 (11)
+[2021-12-15 14:55:33 +0000] [11] [INFO] Using worker: sync
+[2021-12-15 14:55:33 +0000] [12] [INFO] Booting worker with pid: 12
+Not Found: /media/plants/boston_fern.jpeg
+Not Found: /media/plants/ceropegia_woordii.jpeg
+Not Found: /media/plants/Epiphyllum-anguliger.jpeg
+Not Found: /media/plants/ceropegia_woordii.jpeg
+Not Found: /media/plants/boston_fern.jpeg
+Not Found: /media/plants/Epiphyllum-anguliger.jpeg
+Not Found: /media/plants/ceropegia_woordii.jpeg

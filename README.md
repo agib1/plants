@@ -30,5 +30,6 @@ run 'docker-compose --build up' to run backend and frontend in containers with l
 
 #### For Production:
 run 'docker-compose -f docker-compose.prod.yaml up'\
-the production docker-compose file pulls docker images for the backend and server from github packages, ready for deployment.
+the prod docker-compose builds docker images for production and tests server.
+the deploy docker-compose file pulls docker images for the backend and server from github packages, ready for deployment.
 

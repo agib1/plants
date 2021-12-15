@@ -45,7 +45,7 @@ jobs:
         run: |
           pip install -r backend/requirements.txt
      
-      - name: Lint
+      - name: Lint Django project
         run: |
           pip install pylint
           cd backend
@@ -56,7 +56,7 @@ jobs:
           cd backend
           python manage.py migrate
 
-      - name: Run tests and test coverage
+      - name: Run tests and test coverage for Django project
         run: |
           cd backend
           coverage run --source='.' manage.py test
@@ -89,7 +89,7 @@ jobs:
               cd frontend/plantsapp
               npm run lint
               
-      - name: Test Vue App
+      - name: Run tests and test coverage Vue App
         run: |
               cd frontend/plantsapp
               npm run test:unit

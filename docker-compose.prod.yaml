@@ -1,3 +1,4 @@
+#compose for testing production
 version: "3"
 
 services:     
@@ -40,6 +41,7 @@ services:
       - ./prod.conf:/etc/nginx/nginx.conf
       - django-static:/usr/src/app/static
       - django-media:/usr/src/app/media
+      - ././backend/Logging/:/var/log/backend
     depends_on:
       - dj_prod
 
