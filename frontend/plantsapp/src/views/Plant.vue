@@ -8,6 +8,9 @@
         <br/>
         <h3>{{ plant.instructions }}</h3>
         <br/>
+        <router-link :to="{ name: 'plants'}">
+        <button id="name">Back To Plants</button>
+        </router-link>
         </div>
     </div>
 </template>

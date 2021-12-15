@@ -55,11 +55,13 @@ jobs:
         run: |
           cd backend
           python manage.py migrate
-     
-      - name: Run tests
+
+      - name: Run tests and test coverage
         run: |
           cd backend
-          python manage.py test
+          coverage run --source='.' manage.py test
+          coverage report
+
 
   Test-Vue:
     runs-on: ubuntu-latest
@@ -75,12 +77,12 @@ jobs:
       - name: Install dependencies
         run: |
               cd frontend/plantsapp
-              npm ci # install dependencies
+              npm ci
 
       - name: Build Vue App
         run: |
               cd frontend/plantsapp
-              npm run build --if-present # build the project
+              npm run build --if-present
 
       - name: Lint Vue App
         run: |
@@ -90,5 +92,5 @@ jobs:
       - name: Test Vue App
         run: |
               cd frontend/plantsapp
-              npm run test:unit # run the tests
+              npm run test:unit
   

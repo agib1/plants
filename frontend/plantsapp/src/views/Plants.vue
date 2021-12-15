@@ -3,6 +3,10 @@
         <router-link :to="{ name: 'plant', params: { slug: PlantsAPIData[Math.floor(Math.random()*PlantsAPIData.length)].slug}}">
         <button id="name">Random Plant</button>
         </router-link>
+        <div id="top"></div>
+        <router-link :to="{ name: 'request'}">
+        <button id="name">Request Plant</button>
+        </router-link>
         <div id="grid">
         <div id="entries" v-for="plants in PlantsAPIData" :key="plants.id">
             <div id="entry">

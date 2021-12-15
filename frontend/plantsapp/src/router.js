@@ -1,6 +1,7 @@
 import { createWebHistory, createRouter } from "vue-router";
 import Plants from "./views/Plants.vue";
 import Plant from "./views/Plant.vue";
+import Request from "./views/Request.vue";
 
 const routes = [
   {
@@ -12,6 +13,11 @@ const routes = [
     path: "/:slug",
     name: "plant",
     component: Plant,
+  },
+  {
+    path: "/request",
+    name: "request",
+    component: Request,
   }
 ];
 

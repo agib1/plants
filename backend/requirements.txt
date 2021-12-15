@@ -7,3 +7,4 @@ cryptography
 python-jose
 gunicorn==20.1.0
 Pillow
+coverage
